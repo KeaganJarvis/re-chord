@@ -1,5 +1,11 @@
 'use strict';
 
+/*
+savedURLs eg data:
+{'https://www.youtube.com/watch?v=NPBCbTZWnq0':{'title':'Yiruma - River Flows in You', 'favicon':'foo'},
+'https://www.youtube.com/watch?v=yuboWIBPDvk':{'title':'The Lord of the Rings - Main Theme (Piano Version)', 'favicon':'bar'}}
+*/
+
 // these three global funcs should be in a seprate UTILs file...
 function saveCurrentURL(){
     console.log('saving')
@@ -9,11 +15,11 @@ function saveCurrentURL(){
       var current_favicon_url = tab.favIconUrl;
       // var saved_urls = []; TODO this seemed to not be used anywhere so commented
       // TODO(cont) Thought it was for setup initially. test from scratch setup again
-      // get the list of existing saved URLS
-      chrome.storage.sync.get({savedURLs: []}, function(data) {
+      // get the object of existing saved URLS
+      chrome.storage.sync.get({savedURLs: {}}, function(data) {
         var savedURLs = data.savedURLs
-        // append to that list
-        savedURLs.push(current_url)
+        // append to that object
+        savedURLs[current_url] = {'title':current_title, 'favicon':current_favicon_url}
         // store the list with the newly appended url
         chrome.storage.sync.set({savedURLs: savedURLs}, function() {
         })
@@ -38,8 +44,10 @@ function shuffle(array) {
 }
 
 function loadPractiseTabs(){
-    chrome.storage.sync.get({savedURLs: []}, function(data) {
-        var allURLs = data.savedURLs;
+    chrome.storage.sync.get({savedURLs: {}}, function(data) {
+        var allURLsData = data.savedURLs;
+        // TODO should do something here if no URLs are saved
+        var allURLs = Object.keys(allURLsData)
         chrome.storage.sync.get({defaultTabs: 7}, function(data) {
             try{
                 // first tries this case whereby we are doing ths fnc from the popup
