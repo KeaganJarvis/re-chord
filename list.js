@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
     chrome.storage.sync.get({savedURLs: []}, function(data) {
         var allURLs = data.savedURLs;
         for (var item in allURLs) {
-            var item_specific_div = '<div><a href='+item+' target="_blank">'+ item + '</a><input class="mini-right" type="image" id="btn'+item+'" src="images/red_x_tiny.png" /></div></br>'
+            var item_specific_div = '<div><img src="'+allURLs[item]['favicon']+'" width="15" height="15"><a href='+item+' target="_blank">'+ allURLs[item]['title'] + '</a><input class="mini-right" type="image" id="btn'+item+'" src="images/red_x_tiny.png" /></div></br>'
             targetDiv.innerHTML += item_specific_div
 
         }
