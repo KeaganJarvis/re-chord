@@ -5,6 +5,8 @@ function saveCurrentURL(){
     console.log('saving')
     chrome.tabs.getSelected(null,function(tab) {
       var current_url = tab.url;
+      var current_title = tab.title;
+      var current_favicon_url = tab.favIconUrl;
       // var saved_urls = []; TODO this seemed to not be used anywhere so commented
       // TODO(cont) Thought it was for setup initially. test from scratch setup again
       // get the list of existing saved URLS

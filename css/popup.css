@@ -39,6 +39,11 @@ body {
   }
 }
 
+.darkInput{
+  background-color: #282D33;
+  color: #ebebeb
+}
+
 a {
   outline: none;
   color: #3477db;
