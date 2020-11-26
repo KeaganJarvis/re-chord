@@ -1,0 +1,39 @@
+{
+    "name": "Re-Chord",
+    "version": "1.0",
+    "description": "Track and Practise your music!",
+    "permissions": ["storage",
+                    "tabs",
+                    "declarativeContent"],
+    "options_page": "options.html",
+    "background": {
+        "scripts": ["do_work_on_install.js"],
+        "persistent": true
+    },
+    "browser_action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+          "16": "images/icon16.png",
+          "32": "images/icon32.png",
+          "48": "images/icon48.png",
+          "128": "images/icon128.png"
+        }
+    },
+    "icons": {
+        "16": "images/icon16.png",
+        "32": "images/icon32.png",
+        "48": "images/icon48.png",
+        "128": "images/icon128.png"
+    },
+    "commands": {
+        "1-suspend-tab": {
+          "description": "Save current Tab",
+          "suggested_key": { "default": "Ctrl+Shift+S" }
+        },
+        "2-toggle-temp-whitelist-tab": {
+          "description": "Open default number of random tabs",
+          "suggested_key": { "default": "Ctrl+Shift+O" }
+        }
+    },
+    "manifest_version": 2
+  }
