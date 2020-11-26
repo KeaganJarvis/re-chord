@@ -3,12 +3,11 @@
     "version": "1.0",
     "description": "Track and Practise your music!",
     "permissions": ["storage",
-                    "tabs",
-                    "declarativeContent"],
+                    "tabs"],
     "options_page": "options.html",
     "background": {
-        "scripts": ["do_work_on_install.js"],
-        "persistent": true
+        "scripts": ["background.js"],
+        "persistent": false
     },
     "browser_action": {
         "default_popup": "popup.html",
@@ -26,11 +25,11 @@
         "128": "images/icon128.png"
     },
     "commands": {
-        "1-suspend-tab": {
+        "1-save-tab": {
           "description": "Save current Tab",
           "suggested_key": { "default": "Ctrl+Shift+S" }
         },
-        "2-toggle-temp-whitelist-tab": {
+        "2-open-practise-tabs": {
           "description": "Open default number of random tabs",
           "suggested_key": { "default": "Ctrl+Shift+O" }
         }
