@@ -8,7 +8,6 @@ savedURLs eg data:
 
 // these three global funcs should be in a seprate UTILs file...
 function saveCurrentURL(){
-    console.log('saving')
     chrome.tabs.getSelected(null,function(tab) {
       var current_url = tab.url;
       var current_title = tab.title;
